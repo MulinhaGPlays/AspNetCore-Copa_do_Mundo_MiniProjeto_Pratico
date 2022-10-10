@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3c1bd4ff5ad41888a4b9d02d848ac15" Name="Diagram1">
+        <EntityTypeShape EntityType="CopaDoMundoModel.Alocacao" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="CopaDoMundoModel.Area" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="CopaDoMundoModel.Torcedor" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="CopaDoMundoModel.AreaQtd" Width="1.5" PointX="2.75" PointY="3.75" />
+        <AssociationConnector Association="CopaDoMundoModel.FK__Alocacao__IDArea__4BAC3F29" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

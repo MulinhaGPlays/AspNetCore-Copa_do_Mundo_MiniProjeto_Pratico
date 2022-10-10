@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CopaDoMundoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Alocacao">
+          <Key>
+            <PropertyRef Name="IDArea" />
+            <PropertyRef Name="IDTor" />
+          </Key>
+          <Property Name="IDArea" Type="int" Nullable="false" />
+          <Property Name="IDTor" Type="int" Nullable="false" />
+          <Property Name="DataAlocacao" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Name="IDArea" Type="int" Nullable="false" />
+          <Property Name="ValorIngresso" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CopaDoMundo.dbo.Torcedor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Torcedor">
+          <Key>
+            <PropertyRef Name="IDTor" />
+          </Key>
+          <Property Name="IDTor" Type="int" Nullable="false" />
+          <Property Name="IDNome" Type="varchar" MaxLength="50" />
+          <Property Name="Idade" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CopaDoMundo.dbo.AreaQtd' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AreaQtd">
+          <Key>
+            <PropertyRef Name="IDAreaArea" />
+          </Key>
+          <Property Name="IDAreaArea" Type="int" Nullable="false" />
+          <Property Name="Qtd" Type="int" />
+        </EntityType>
+        <Association Name="FK__Alocacao__IDArea__4BAC3F29">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Alocacao" Type="Self.Alocacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="Alocacao">
+              <PropertyRef Name="IDArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CopaDoMundoModelStoreContainer">
+          <EntitySet Name="Alocacao" EntityType="Self.Alocacao" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Torcedor" EntityType="Self.Torcedor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Torcedor].[IDTor] AS [IDTor], 
+[Torcedor].[IDNome] AS [IDNome], 
+[Torcedor].[Idade] AS [Idade]
+FROM [dbo].[Torcedor] AS [Torcedor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AreaQtd" EntityType="Self.AreaQtd" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[AreaQtd].[IDAreaArea] AS [IDAreaArea], 
+[AreaQtd].[Qtd] AS [Qtd]
+FROM [dbo].[AreaQtd] AS [AreaQtd]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Alocacao__IDArea__4BAC3F29" Association="Self.FK__Alocacao__IDArea__4BAC3F29">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Alocacao" EntitySet="Alocacao" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CopaDoMundoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CopaDoMundoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Alocacao" EntityType="CopaDoMundoModel.Alocacao" />
+          <EntitySet Name="Area" EntityType="CopaDoMundoModel.Area" />
+          <EntitySet Name="Torcedor" EntityType="CopaDoMundoModel.Torcedor" />
+          <EntitySet Name="AreaQtd" EntityType="CopaDoMundoModel.AreaQtd" />
+          <AssociationSet Name="FK__Alocacao__IDArea__4BAC3F29" Association="CopaDoMundoModel.FK__Alocacao__IDArea__4BAC3F29">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Alocacao" EntitySet="Alocacao" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Alocacao">
+          <Key>
+            <PropertyRef Name="IDArea" />
+            <PropertyRef Name="IDTor" />
+          </Key>
+          <Property Name="IDArea" Type="Int32" Nullable="false" />
+          <Property Name="IDTor" Type="Int32" Nullable="false" />
+          <Property Name="DataAlocacao" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Area" Relationship="CopaDoMundoModel.FK__Alocacao__IDArea__4BAC3F29" FromRole="Alocacao" ToRole="Area" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="IDArea" />
+          </Key>
+          <Property Name="IDArea" Type="Int32" Nullable="false" />
+          <Property Name="ValorIngresso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Alocacao" Relationship="CopaDoMundoModel.FK__Alocacao__IDArea__4BAC3F29" FromRole="Area" ToRole="Alocacao" />
+        </EntityType>
+        <EntityType Name="Torcedor">
+          <Key>
+            <PropertyRef Name="IDTor" />
+          </Key>
+          <Property Name="IDTor" Type="Int32" Nullable="false" />
+          <Property Name="IDNome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Idade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AreaQtd">
+          <Key>
+            <PropertyRef Name="IDAreaArea" />
+          </Key>
+          <Property Name="IDAreaArea" Type="Int32" Nullable="false" />
+          <Property Name="Qtd" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__Alocacao__IDArea__4BAC3F29">
+          <End Type="CopaDoMundoModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="CopaDoMundoModel.Alocacao" Role="Alocacao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="IDArea" />
+            </Principal>
+            <Dependent Role="Alocacao">
+              <PropertyRef Name="IDArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CopaDoMundoModelStoreContainer" CdmEntityContainer="CopaDoMundoEntities">
+          <EntitySetMapping Name="Alocacao">
+            <EntityTypeMapping TypeName="CopaDoMundoModel.Alocacao">
+              <MappingFragment StoreEntitySet="Alocacao">
+                <ScalarProperty Name="DataAlocacao" ColumnName="DataAlocacao" />
+                <ScalarProperty Name="IDTor" ColumnName="IDTor" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="CopaDoMundoModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="ValorIngresso" ColumnName="ValorIngresso" />
+                <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Torcedor">
+            <EntityTypeMapping TypeName="CopaDoMundoModel.Torcedor">
+              <MappingFragment StoreEntitySet="Torcedor">
+                <ScalarProperty Name="Idade" ColumnName="Idade" />
+                <ScalarProperty Name="IDNome" ColumnName="IDNome" />
+                <ScalarProperty Name="IDTor" ColumnName="IDTor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaQtd">
+            <EntityTypeMapping TypeName="CopaDoMundoModel.AreaQtd">
+              <MappingFragment StoreEntitySet="AreaQtd">
+                <ScalarProperty Name="Qtd" ColumnName="Qtd" />
+                <ScalarProperty Name="IDAreaArea" ColumnName="IDAreaArea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

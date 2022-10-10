@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CopaDoMundoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alocacao">
+    <Key>
+      <PropertyRef Name="IDArea" />
+      <PropertyRef Name="IDTor" />
+    </Key>
+    <Property Name="IDArea" Type="int" Nullable="false" />
+    <Property Name="IDTor" Type="int" Nullable="false" />
+    <Property Name="DataAlocacao" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="IDArea" />
+    </Key>
+    <Property Name="IDArea" Type="int" Nullable="false" />
+    <Property Name="ValorIngresso" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CopaDoMundo.dbo.Torcedor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Torcedor">
+    <Key>
+      <PropertyRef Name="IDTor" />
+    </Key>
+    <Property Name="IDTor" Type="int" Nullable="false" />
+    <Property Name="IDNome" Type="varchar" MaxLength="50" />
+    <Property Name="Idade" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CopaDoMundo.dbo.AreaQtd' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AreaQtd">
+    <Key>
+      <PropertyRef Name="IDAreaArea" />
+    </Key>
+    <Property Name="IDAreaArea" Type="int" Nullable="false" />
+    <Property Name="Qtd" Type="int" />
+  </EntityType>
+  <Association Name="FK__Alocacao__IDArea__4BAC3F29">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="Alocacao" Type="Self.Alocacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="IDArea" />
+      </Principal>
+      <Dependent Role="Alocacao">
+        <PropertyRef Name="IDArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CopaDoMundoModelStoreContainer">
+    <EntitySet Name="Alocacao" EntityType="Self.Alocacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Torcedor" EntityType="Self.Torcedor" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[Torcedor].[IDTor] AS [IDTor], 
+[Torcedor].[IDNome] AS [IDNome], 
+[Torcedor].[Idade] AS [Idade]
+FROM [dbo].[Torcedor] AS [Torcedor]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="AreaQtd" EntityType="Self.AreaQtd" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[AreaQtd].[IDAreaArea] AS [IDAreaArea], 
+[AreaQtd].[Qtd] AS [Qtd]
+FROM [dbo].[AreaQtd] AS [AreaQtd]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Alocacao__IDArea__4BAC3F29" Association="Self.FK__Alocacao__IDArea__4BAC3F29">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Alocacao" EntitySet="Alocacao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
