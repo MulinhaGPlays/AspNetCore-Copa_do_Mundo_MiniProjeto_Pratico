@@ -84,3 +84,7 @@ C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\
 C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\obj\Debug\CopaDoMundo.csproj.CopyComplete
 C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\obj\Debug\CopaDoMundo.dll
 C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\obj\Debug\CopaDoMundo.pdb
+C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\bin\EntityFramework.dll
+C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\bin\EntityFramework.SqlServer.dll
+C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\bin\EntityFramework.xml
+C:\Users\android\Documents\GitHub\Copa_do_Mundo_MiniProjeto_Pratico\CopaDoMundo\bin\EntityFramework.SqlServer.xml

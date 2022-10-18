@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CopaDoMundoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Alocacao">
+    <Key>
+      <PropertyRef Name="IDArea" />
+      <PropertyRef Name="IDTor" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" Nullable="false" />
+    <Property Name="IDTor" Type="Int32" Nullable="false" />
+    <Property Name="alocacaodata" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Area" Relationship="Self.FK__Alocacao__IDArea__3A81B327" FromRole="Alocacao" ToRole="Area" />
+    <NavigationProperty Name="Torcedor" Relationship="Self.FK__Alocacao__IDTor__3B75D760" FromRole="Alocacao" ToRole="Torcedor" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="IDArea" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" Nullable="false" />
+    <Property Name="ValorIngresso" Type="Double" />
+    <NavigationProperty Name="Alocacao" Relationship="Self.FK__Alocacao__IDArea__3A81B327" FromRole="Area" ToRole="Alocacao" />
+  </EntityType>
+  <EntityType Name="Torcedor">
+    <Key>
+      <PropertyRef Name="IDTor" />
+    </Key>
+    <Property Name="IDTor" Type="Int32" Nullable="false" />
+    <Property Name="IDNome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Idade" Type="Int32" />
+    <NavigationProperty Name="Alocacao" Relationship="Self.FK__Alocacao__IDTor__3B75D760" FromRole="Torcedor" ToRole="Alocacao" />
+  </EntityType>
+  <EntityType Name="AreaAlocacao">
+    <Key>
+      <PropertyRef Name="IDArea" />
+    </Key>
+    <Property Name="IDArea" Type="Int32" Nullable="false" />
+    <Property Name="ValorIngresso" Type="Double" />
+    <Property Name="qtd" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TorcedorAlocado">
+    <Key>
+      <PropertyRef Name="IDTor" />
+    </Key>
+    <Property Name="IDTor" Type="Int32" Nullable="false" />
+    <Property Name="IDNome" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Idade" Type="Int32" />
+    <Property Name="IDArea" Type="Int32" />
+    <Property Name="toralocado" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__Alocacao__IDArea__3A81B327">
+    <End Role="Area" Type="Self.Area" Multiplicity="1" />
+    <End Role="Alocacao" Type="Self.Alocacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="IDArea" />
+      </Principal>
+      <Dependent Role="Alocacao">
+        <PropertyRef Name="IDArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Alocacao__IDTor__3B75D760">
+    <End Role="Torcedor" Type="Self.Torcedor" Multiplicity="1" />
+    <End Role="Alocacao" Type="Self.Alocacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Torcedor">
+        <PropertyRef Name="IDTor" />
+      </Principal>
+      <Dependent Role="Alocacao">
+        <PropertyRef Name="IDTor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CopaDoMundoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alocacao" EntityType="Self.Alocacao" />
+    <EntitySet Name="Area" EntityType="Self.Area" />
+    <EntitySet Name="Torcedor" EntityType="Self.Torcedor" />
+    <EntitySet Name="AreaAlocacao" EntityType="Self.AreaAlocacao" />
+    <EntitySet Name="TorcedorAlocado" EntityType="Self.TorcedorAlocado" />
+    <AssociationSet Name="FK__Alocacao__IDArea__3A81B327" Association="Self.FK__Alocacao__IDArea__3A81B327">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Alocacao" EntitySet="Alocacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Alocacao__IDTor__3B75D760" Association="Self.FK__Alocacao__IDTor__3B75D760">
+      <End Role="Torcedor" EntitySet="Torcedor" />
+      <End Role="Alocacao" EntitySet="Alocacao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

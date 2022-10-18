@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CopaDoMundoModelStoreContainer" CdmEntityContainer="CopaDoMundoEntities">
+    <EntitySetMapping Name="Alocacao">
+      <EntityTypeMapping TypeName="CopaDoMundoModel.Alocacao">
+        <MappingFragment StoreEntitySet="Alocacao">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="IDTor" ColumnName="IDTor" />
+          <ScalarProperty Name="alocacaodata" ColumnName="alocacaodata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="CopaDoMundoModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="ValorIngresso" ColumnName="ValorIngresso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Torcedor">
+      <EntityTypeMapping TypeName="CopaDoMundoModel.Torcedor">
+        <MappingFragment StoreEntitySet="Torcedor">
+          <ScalarProperty Name="IDTor" ColumnName="IDTor" />
+          <ScalarProperty Name="IDNome" ColumnName="IDNome" />
+          <ScalarProperty Name="Idade" ColumnName="Idade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AreaAlocacao">
+      <EntityTypeMapping TypeName="CopaDoMundoModel.AreaAlocacao">
+        <MappingFragment StoreEntitySet="AreaAlocacao">
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="ValorIngresso" ColumnName="ValorIngresso" />
+          <ScalarProperty Name="qtd" ColumnName="qtd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TorcedorAlocado">
+      <EntityTypeMapping TypeName="CopaDoMundoModel.TorcedorAlocado">
+        <MappingFragment StoreEntitySet="TorcedorAlocado">
+          <ScalarProperty Name="IDTor" ColumnName="IDTor" />
+          <ScalarProperty Name="IDNome" ColumnName="IDNome" />
+          <ScalarProperty Name="Idade" ColumnName="Idade" />
+          <ScalarProperty Name="IDArea" ColumnName="IDArea" />
+          <ScalarProperty Name="toralocado" ColumnName="toralocado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

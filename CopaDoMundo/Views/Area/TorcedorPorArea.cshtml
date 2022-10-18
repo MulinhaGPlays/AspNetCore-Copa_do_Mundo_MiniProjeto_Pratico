@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CopaDoMundo.Models.TorcedorAlocado>
+@{
+    ViewBag.Title = "TorcedorPorArea";
+}
+
+<h2>TorcedorPorArea</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <div class="linkcor">
+            <br />
+            Id:@item.IDTor<br />
+            Nome:@item.IDNome<br />
+            Torcedores:@item.toralocado
+        </div>
+    </div>
+}

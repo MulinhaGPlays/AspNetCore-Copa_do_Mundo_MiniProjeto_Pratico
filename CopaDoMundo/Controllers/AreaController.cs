@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CopaDoMundo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,9 @@ namespace CopaDoMundo.Controllers
 {
     public class AreaController : Controller
     {
+        CopaDoMundoEntities db = new CopaDoMundoEntities();
+
         public ActionResult Index() => View();
-        public ActionResult Create() => View();
+        public ActionResult TorcedorPorArea(int id) => View(db.TorcedorAlocado.Where(c => c.IDArea == id));
     }
 }

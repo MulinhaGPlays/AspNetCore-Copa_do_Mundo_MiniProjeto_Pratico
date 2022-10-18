@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CopaDoMundo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace CopaDoMundo.Controllers
 {
     public class TorcedorController : Controller
     {
+
         [HttpGet] public ActionResult Index() => View();
         [HttpGet] public ActionResult ListaTorcedor() => View();
         [HttpGet] public ActionResult Create() => View();

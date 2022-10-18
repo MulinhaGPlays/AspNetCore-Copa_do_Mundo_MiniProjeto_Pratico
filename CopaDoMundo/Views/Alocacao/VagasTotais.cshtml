@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CopaDoMundo.Models.AreaAlocacao>
+@{
+    ViewBag.Title = "VagasTotais";
+}
+
+<h2>VagasTotais</h2>
+
+@foreach (var item in Model)
+{
+    <div>
+        <div class="linkcor">
+            <a class="torpai" href="/Area/TorcedorPorArea?id=@item.IDArea">
+                <br />
+                Id:@item.IDArea<br />
+                Valor:@item.ValorIngresso<br />
+                Qtd:@item.qtd
+            </a>
+        </div>
+    </div>
+}
